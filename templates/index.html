@@ -21,22 +21,22 @@
     <!--    <h1 class="display-4 text-center mt-4">Estou em index.html</h1>-->
     <h1 class="display-4 text-center mt-4 titulo">App de Gestão de Tarefas</h1>
     <div class="row">
-        <div class="col-md-4 offset-md-4 my-auto"> <!--Este div vai ocupar 4 colunas do espaço (centrado)-->
-            <div class="card"> <!--Criação do objeto card-->
+        <!--Este div vai ocupar 4 colunas do espaço (centrado)-->
+        <div class="col-md-4 offset-md-4 my-auto">
+            <!--Criação do objeto card-->
+            <div class="card">
                 <div class="card-header">
-
+                    <!-- Separamos o input do botão colocando o input neste form-group para que os elementos não estejam colados e haja separação entre eles -->
                     <form action="/criar-tarefa" method="post">
-                        <!-- Separamos o input do botão colocando o input neste form-group para que os elementos não estejam colados e haja separação entre eles -->
                         <div class="form-group">
-                            <input autofocus class="form-control" name="conteúdo_tarefa"
-                                   placeholder="Tarefa" type="text">
+                            <input autofocus class="form-control" name="conteúdo_tarefa" placeholder="Tarefa"
+                                   type="text">
                         </div>
+                        <!-- btn-block faz com que o botão ocupe toda a largura -->
                         <button class="btn btn-primary btn-block" type="submit">
-                            <!-- btn-block faz com que o botão ocupe toda a largura -->
                             Guardar
                         </button>
                     </form>
-
                 </div>
                 <div class="card-body">
                     <!-- As etiquetas <ul> e <li> servem para criar listas em HTML -->
