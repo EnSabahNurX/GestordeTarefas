@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App Gestor de Tarefas</title>
+    <!-- Bootstrap 4 Sketchy -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css"
+          integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet">
+    <!-- Style sheet -->
+    <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet">
+</head>
+<body>
+<main class="container p-4">
+    <!--    <h1 class="display-4 text-center mt-4">Estou em index.html</h1>-->
+    <h1 class="display-4 text-center mt-4 titulo">App de Gestão de Tarefas</h1>
+    <div class="row">
+        <div class="col-md-4 offset-md-4 my-auto"> <!--Este div vai ocupar 4 colunas do espaço (centrado)-->
+            <div class="card"> <!--Criação do objeto card-->
+                <div class="card-header">
+
+                    <form action="/criar-tarefa" method="post">
+                        <!-- Separamos o input do botão colocando o input neste form-group para que os elementos não estejam colados e haja separação entre eles -->
+                        <div class="form-group">
+                            <input autofocus class="form-control" name="conteúdo_tarefa"
+                                   placeholder="Tarefa" type="text">
+                        </div>
+                        <button class="btn btn-primary btn-block" type="submit">
+                            <!-- btn-block faz com que o botão ocupe toda a largura -->
+                            Guardar
+                        </button>
+                    </form>
+
+                </div>
+                <div class="card-body">
+                    <!-- As etiquetas <ul> e <li> servem para criar listas em HTML -->
+                    <ul class="list-group">
+                        <!-- Graças a Jinja pode-se introduzir código Python no nosso HTML e Python encarrega-se de o executar e interpretar-->
+                        {% for tarefa in lista_de_tarefas %}
+                        <li class="list-group-item">
+                            <span class="{% if tarefa.feita==true %} tarefa_feita {% endif %}"> {{tarefa.conteúdo}} </span>
+                            <!-- conteúdo é a variável da classe Tarefa que armazena o texto da tarefa -->
+                            <a href="/tarefa-feita/{{tarefa.id}}" style="text-decoration:none">
+                                <svg class="bi bi-check-box" fill="green" height="2em" viewBox="0 0 16 16" width="2em"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd"
+                                          d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z"
+                                          fill-rule="evenodd"/>
+                                    <path clip-rule="evenodd"
+                                          d="M1.5 13A1.5 1.5 0 003 14.5h10a1.5 1.5 0 001.5-1.5V8a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5V3a.5.5 0 01.5-.5h8a.5.5 0 000-1H3A1.5 1.5 0 001.5 3v10z"
+                                          fill-rule="evenodd"/>
+                                </svg>
+                            </a>
+                            <a href="/eliminar-tarefa/{{tarefa.id}}" style="text-decoration:none">
+                                <svg class="bi bi-trash" fill="red" height="2em" viewBox="0 0 16 16" width="2em"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+                                    <path clip-rule="evenodd"
+                                          d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                                          fill-rule="evenodd"/>
+                                </svg>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
