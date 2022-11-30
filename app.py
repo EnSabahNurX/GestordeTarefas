@@ -75,6 +75,18 @@ def feita(id):
     return redirect(url_for('home'))
 
 
+@app.route('/limpar', methods=['POST'])
+def limpar():
+    # Limpa todas as informações na base de dados
+    db.drop_all()
+    # Criação das tabelas novamente
+    db.create_all()
+    # Executar a operação pendente da base de dados
+    db.session.commit()
+    # Redireciona-nos à função home() e se tudo correu bem, ao atualizar, a tarefa eliminada não vai aparecer na listagem
+    return redirect(url_for('home'))
+
+
 if __name__ == '__main__':
     # O debug=True faz com que cada vez que reiniciemos o servidor ou modifiquemos o código,
     # o servidor de Flask reinicia-se sozinho
