@@ -44,7 +44,7 @@
                         <!-- Graças a Jinja pode-se introduzir código Python no nosso HTML e Python encarrega-se de o executar e interpretar-->
                         {% for tarefa in lista_de_tarefas %}
                         <li class="list-group-item">
-                            <span class="{% if tarefa.feita==true %} tarefa_feita {% endif %}"> {{tarefa.conteúdo}} </span>
+                            <span class="{% if tarefa.feita==true %} tarefa_feita {% endif %}"># {{tarefa.id}} - {{tarefa.conteúdo}} </span>
                             <!-- conteúdo é a variável da classe Tarefa que armazena o texto da tarefa -->
                             <a href="/tarefa-feita/{{tarefa.id}}" style="text-decoration:none">
                                 <svg class="bi bi-check-box" fill="green" height="2em" viewBox="0 0 16 16" width="2em"
