@@ -36,8 +36,12 @@ with app.app_context():
 def home():
     # Consultamos e armazenamos todas as tarefas da base de dados
     todas_as_tarefas = Tarefa.query.all()
+    total_tarefas = len(todas_as_tarefas)
+    tarefas_pendentes = len(Tarefa.query.filter_by(feita=False).all())
+    tarefas_feitas = len(Tarefa.query.filter_by(feita=True).all())
     # Agora na variável todas_as_tarefas estão armazenadas todas as tarefas. Vamos entregar esta variável ao template index.html
-    return render_template("index.html", lista_de_tarefas=todas_as_tarefas)  # Carrega - se o template index.html
+    return render_template("index.html", feitas=tarefas_feitas, pendentes=tarefas_pendentes, total=total_tarefas,
+                           lista_de_tarefas=todas_as_tarefas)  # Carrega - se o template index.html
 
 
 @app.route('/criar-tarefa', methods=['POST'])

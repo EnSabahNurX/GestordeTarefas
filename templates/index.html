@@ -71,12 +71,19 @@
                     </ul>
                 </div>
                 <div class="card-bottom" style="width: auto;">
+                    <div class="text-center">
+                        <h1 class="h4 status">Status</h1>
+                        <span> Total de tarefas criadas: {{ total }} </span><br>
+                        <span> Total de tarefas pendentes: {{ pendentes }} </span><br>
+                        <span> Total de tarefas feitas: {{ feitas }} </span><br>
+                    </div>
                     <form action="/limpar" class="text-center" method="post">
                         <!-- btn-block faz com que o botão ocupe toda a largura -->
                         <button class="btn btn-primary btn-outline-danger btn-sm" type="submit">
                             Limpar
                         </button>
                     </form>
+                    <br>
                 </div>
             </div>
         </div>
