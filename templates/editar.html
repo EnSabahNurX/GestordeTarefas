@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App Gestor de Tarefas</title>
+    <!-- Bootstrap 4 Sketchy -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css"
+          integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet">
+    <!-- Style sheet -->
+    <link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet">
+</head>
+
+<body>
+<main class="container p-4">
+    <!--    <h1 class="display-4 text-center mt-4">Estou em index.html</h1>-->
+    <h1 class="display-5 text-center mt-4 titulo">App de Gestão de Tarefas</h1>
+    <div class="row">
+        <!--Este div vai ocupar 4 colunas do espaço (centrado)-->
+        <div class="col-md-4 offset-md-4 my-auto">
+            <!--Criação do objeto card-->
+            <div class="card">
+                <br>
+                <h1 class="h4 status text-center">Editar tarefa</h1>
+                <div class="card-header">
+                    <!-- Separamos o input do botão colocando o input neste form-group para que os elementos não estejam colados e haja separação entre eles -->
+                    <form action="/editar-tarefa/{{tarefa.id}}" method="POST">
+                        <div class="form-group">
+                            <input autofocus class="form-control" id="conteúdo_tarefa" name="conteúdo_tarefa"
+                                   name="conteúdo_tarefa" placeholder="Editar tarefa" type="text"
+                                   value="{{tarefa.conteúdo}}">
+                        </div>
+                        <!-- btn-block faz com que o botão ocupe toda a largura -->
+                        <button class="btn btn-primary btn-block" type="submit">
+                            Editar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>

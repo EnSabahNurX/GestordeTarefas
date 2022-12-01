@@ -19,7 +19,7 @@
 <body>
 <main class="container p-4">
     <!--    <h1 class="display-4 text-center mt-4">Estou em index.html</h1>-->
-    <h1 class="display-4 text-center mt-4 titulo">App de Gestão de Tarefas</h1>
+    <h1 class="display-5 text-center mt-4 titulo">App de Gestão de Tarefas</h1>
     <div class="row">
         <!--Este div vai ocupar 4 colunas do espaço (centrado)-->
         <div class="col-md-4 offset-md-4 my-auto">
@@ -46,26 +46,37 @@
                         <li class="list-group-item">
                             <span class="{% if tarefa.feita==true %} tarefa_feita {% endif %}"># {{tarefa.id}} - {{tarefa.conteúdo}} </span>
                             <!-- conteúdo é a variável da classe Tarefa que armazena o texto da tarefa -->
-                            <a href="/tarefa-feita/{{tarefa.id}}" style="text-decoration:none">
-                                <svg class="bi bi-check-box" fill="green" height="2em" viewBox="0 0 16 16" width="2em"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path clip-rule="evenodd"
-                                          d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z"
-                                          fill-rule="evenodd"/>
-                                    <path clip-rule="evenodd"
-                                          d="M1.5 13A1.5 1.5 0 003 14.5h10a1.5 1.5 0 001.5-1.5V8a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5V3a.5.5 0 01.5-.5h8a.5.5 0 000-1H3A1.5 1.5 0 001.5 3v10z"
-                                          fill-rule="evenodd"/>
-                                </svg>
-                            </a>
-                            <a href="/eliminar-tarefa/{{tarefa.id}}" style="text-decoration:none">
-                                <svg class="bi bi-trash" fill="red" height="2em" viewBox="0 0 16 16" width="2em"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
-                                    <path clip-rule="evenodd"
-                                          d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                                          fill-rule="evenodd"/>
-                                </svg>
-                            </a>
+                            <div class="float-right">
+                                <a href="/tarefa-feita/{{tarefa.id}}" style="text-decoration:none">
+                                    <svg class="bi bi-check-box" fill="green" height="2em" viewBox="0 0 16 16"
+                                         width="2em"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path clip-rule="evenodd"
+                                              d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z"
+                                              fill-rule="evenodd"/>
+                                        <path clip-rule="evenodd"
+                                              d="M1.5 13A1.5 1.5 0 003 14.5h10a1.5 1.5 0 001.5-1.5V8a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5V3a.5.5 0 01.5-.5h8a.5.5 0 000-1H3A1.5 1.5 0 001.5 3v10z"
+                                              fill-rule="evenodd"/>
+                                    </svg>
+                                </a>
+                                <a href="/editar-tarefa/{{tarefa.id}}" style="text-decoration:none">
+                                    <svg class="bi bi-pencil-square" fill="blue" height="2em" viewBox="0 0 16 16"
+                                         width="2em" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                                              fill-rule="evenodd"/>
+                                    </svg>
+                                </a>
+                                <a href="/eliminar-tarefa/{{tarefa.id}}" style="text-decoration:none">
+                                    <svg class="bi bi-trash" fill="red" height="2em" viewBox="0 0 16 16" width="2em"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+                                        <path clip-rule="evenodd"
+                                              d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                                              fill-rule="evenodd"/>
+                                    </svg>
+                                </a>
+                            </div>
                         </li>
                         {% endfor %}
                     </ul>

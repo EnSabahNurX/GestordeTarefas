@@ -79,6 +79,19 @@ def feita(id):
     return redirect(url_for('home'))
 
 
+@app.route('/editar-tarefa/<id>', methods=['GET', 'POST'])
+def editar(id):
+    tarefa = Tarefa.query.filter_by(id=int(id)).first()
+
+    if request.method == 'POST':
+        tarefa.conteúdo = request.form['conteúdo_tarefa']
+        db.session.commit()
+        return redirect(url_for('home'))
+
+    else:
+        return render_template('editar.html', tarefa=tarefa)
+
+
 @app.route('/limpar', methods=['POST'])
 def limpar():
     # Limpa todas as informações na base de dados
