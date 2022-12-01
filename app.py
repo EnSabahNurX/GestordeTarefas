@@ -81,14 +81,19 @@ def feita(id):
 
 @app.route('/editar-tarefa/<id>', methods=['GET', 'POST'])
 def editar(id):
+    # Obtém-se a tarefa que se procura
     tarefa = Tarefa.query.filter_by(id=int(id)).first()
-
+    # Se for chamada da página de edição(chamada post já com os dados necessários) apenas atualiza os dados no database
     if request.method == 'POST':
+        # Guardar no campo counteúdo da tabela os dados recebidos do formulário na página de edição
         tarefa.conteúdo = request.form['conteúdo_tarefa']
+        # Executar a operação pendente da base de dados
         db.session.commit()
+        # Redireciona-nos para a função home()
         return redirect(url_for('home'))
-
+    # Se for chamada pela página principal (chamada get) ainda não tem o necessário para atualizar os dados no database
     else:
+        # Redireciona-nos para a página de edição e exporta a variável tarefa
         return render_template('editar.html', tarefa=tarefa)
 
 
